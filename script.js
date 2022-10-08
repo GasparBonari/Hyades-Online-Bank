@@ -409,6 +409,13 @@ btnTransfer.addEventListener("click", function (e)
 
     if (amount > 0 && receiver.user != currentUser.user && amount <= currentUser.balance) 
     {
+        document.querySelector(".minus").classList.remove("hidden");
+
+        setTimeout(function()
+        {
+            document.querySelector(".minus").classList.add("hidden");
+        },700)
+
         currentUser.movements.push(-amount);
         receiver.movements.push(+amount);
 

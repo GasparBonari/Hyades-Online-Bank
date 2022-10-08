@@ -45,6 +45,26 @@ h3{
   top: 0.6cm;
 }
 
+@keyframes symbole{
+  from, to, 65% {transform: translate(-50%, 10)}
+  25% {transform: translate(-50%, 40px)}
+  26% {transform: translate(-50%, -20px)}
+
+}
+
+.minus {
+  margin: 20px auto;
+  left: 76%;
+  width: 30px;
+  height: 40px;
+  transform: translateX(-50%);
+  position: absolute;
+  top: -0.4cm;
+  animation: symbole 5s cubic-bezier(0.645,.045,.355,1) infinite;
+}
+
+
+
 .direction{
   font-size: 2.5rem;
   font-weight: 500;

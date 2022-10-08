@@ -63,7 +63,13 @@ h3{
   animation: symbole 5s cubic-bezier(0.645,.045,.355,1) infinite;
 }
 
-
+.plus{
+  position: absolute;
+  width: 50px;
+  height: 60px;
+  top: 0cm;
+  right: 21.5%;
+}
 
 .direction{
   font-size: 2.5rem;

@@ -100,6 +100,8 @@ const labelLogo = document.querySelector(".logo");
 const labelModal = document.querySelector(".modal");
 const labelOverlay = document.querySelector(".overlay");
 const labelNimbus = document.querySelector(".nimbus");
+const labelMinusSymbol = document.querySelector(".minus");
+const labelPlusSymbol = document.querySelector(".plus");
 
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
@@ -409,11 +411,11 @@ btnTransfer.addEventListener("click", function (e)
 
     if (amount > 0 && receiver.user != currentUser.user && amount <= currentUser.balance) 
     {
-        document.querySelector(".minus").classList.remove("hidden");
+        labelMinusSymbol.classList.remove("hidden");
 
         setTimeout(function()
         {
-            document.querySelector(".minus").classList.add("hidden");
+            labelMinusSymbol.classList.add("hidden");
         },700)
 
         currentUser.movements.push(-amount);
@@ -453,6 +455,13 @@ btnLoan.addEventListener("click", function (e)
 
     if (amountLoad > 0 && deposit10Percent) 
     {
+        labelPlusSymbol.classList.remove("hidden");
+
+        setTimeout(function()
+        {
+            labelPlusSymbol.classList.add("hidden");
+        }, 980)
+
         currentUser.movements.push(+amountLoad);
 
         inputLoanAmount.value = "";

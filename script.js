@@ -129,7 +129,7 @@ const inputMoney = document.querySelector("#new-money");
 
 labelLogo.classList.remove("hidden");
 
-alert("accouts created:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" + "user: rd, pin: 3333\n" + "user: gb, pin: 4444");
+alert("Demo accouts:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" + "user: rd, pin: 3333\n" + "user: gb, pin: 4444");
 
 // CALCULATE DATES
 
@@ -152,10 +152,10 @@ function formatDate(date, locale) {
 
 function formattedNumbers(locale, currency, value) {
     return Intl.NumberFormat(locale,
-        {
-            style: "currency",
-            currency: currency
-        }).format(value)
+    {
+        style: "currency",
+        currency: currency
+    }).format(value)
 }
 
 // DISPLAY MOVEMENTS

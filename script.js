@@ -9,14 +9,14 @@ let accout1 =
     pin: 1111,
     intRate: 1.2,
     movementsDates:
-    [
-        '2019-11-01T13:15:33.035Z',
-        '2020-11-30T09:48:16.867Z',
-        '2021-12-25T06:04:23.907Z',
-        '2021-01-25T14:18:46.235Z',
-        '2022-09-29T16:33:06.386Z',
-        '2022-10-01T14:43:26.374Z',
-    ],
+        [
+            '2019-11-01T13:15:33.035Z',
+            '2020-11-30T09:48:16.867Z',
+            '2021-12-25T06:04:23.907Z',
+            '2021-01-25T14:18:46.235Z',
+            '2022-09-29T16:33:06.386Z',
+            '2022-10-01T14:43:26.374Z',
+        ],
     locale: "da-DK",
     currency: "EUR"
 }
@@ -28,15 +28,15 @@ let accout2 =
     pin: 2222,
     intRate: 1.8,
     movementsDates:
-    [
-        '2019-11-18T21:31:17.178Z',
-        '2020-12-23T07:42:02.383Z',
-        '2021-01-28T09:15:04.904Z',
-        '2021-04-01T10:17:24.185Z',
-        '2022-05-08T14:11:59.604Z',
-        '2022-09-27T17:01:17.194Z',
-        '2022-10-01T23:36:17.929Z',
-    ],
+        [
+            '2019-11-18T21:31:17.178Z',
+            '2020-12-23T07:42:02.383Z',
+            '2021-01-28T09:15:04.904Z',
+            '2021-04-01T10:17:24.185Z',
+            '2022-05-08T14:11:59.604Z',
+            '2022-09-27T17:01:17.194Z',
+            '2022-10-01T23:36:17.929Z',
+        ],
     locale: "en-US",
     currency: "USD"
 }
@@ -48,15 +48,15 @@ let accout3 =
     pin: 3333,
     intRate: 0.5,
     movementsDates:
-    [
-        '2020-11-01T13:05:33.035Z',
-        '2021-11-30T09:08:16.867Z',
-        '2021-12-25T06:01:23.907Z',
-        '2022-01-25T14:31:46.235Z',
-        '2022-02-05T16:33:06.386Z',
-        '2022-04-10T14:43:26.374Z',
-        '2022-10-01T23:36:17.929Z',
-    ],
+        [
+            '2020-11-01T13:05:33.035Z',
+            '2021-11-30T09:08:16.867Z',
+            '2021-12-25T06:01:23.907Z',
+            '2022-01-25T14:31:46.235Z',
+            '2022-02-05T16:33:06.386Z',
+            '2022-04-10T14:43:26.374Z',
+            '2022-10-01T23:36:17.929Z',
+        ],
     locale: "en-GB",
     currency: "GBP"
 }
@@ -68,16 +68,16 @@ let accout4 =
     pin: 4444,
     intRate: 2,
     movementsDates:
-    [
-        '2019-11-01T13:15:33.035Z',
-        '2020-11-30T09:48:16.867Z',
-        '2020-12-25T06:07:23.907Z',
-        '2021-01-25T14:18:46.235Z',
-        '2021-02-05T16:23:06.386Z',
-        '2021-02-10T14:41:26.374Z',
-        '2022-06-25T18:04:59.371Z',
-        '2022-10-01T23:36:17.929Z',
-    ],
+        [
+            '2019-11-01T13:15:33.035Z',
+            '2020-11-30T09:48:16.867Z',
+            '2020-12-25T06:07:23.907Z',
+            '2021-01-25T14:18:46.235Z',
+            '2021-02-05T16:23:06.386Z',
+            '2021-02-10T14:41:26.374Z',
+            '2022-06-25T18:04:59.371Z',
+            '2022-10-01T23:36:17.929Z',
+        ],
     locale: "es-AR",
     currency: "ARS"
 }
@@ -133,33 +133,29 @@ alert("accouts created:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" +
 
 // CALCULATE DATES
 
-function formatDate(date, locale)
-{
+function formatDate(date, locale) {
     let calcDate = (date1, date2) => Math.round(Math.abs(date1 - date2) / (1000 * 60 * 60 * 24));
 
     let dayPassed = calcDate(new Date(), date);
 
-    if(dayPassed == 0) return "Today"; // return is going to RETURN that value
-    if(dayPassed == 1) return "Yesterday";
-    if(dayPassed <= 7)
-    {
+    if (dayPassed == 0) return "Today"; // return is going to RETURN that value
+    if (dayPassed == 1) return "Yesterday";
+    if (dayPassed <= 7) {
         return `${dayPassed} days ago`;
     }
-    else
-    {
+    else {
         return new Intl.DateTimeFormat(locale).format(date)
     }
 }
 
 // FORMAT BALANCE AND MOVEMENTS
 
-function formattedNumbers(locale, currency, value)
-{
-    return Intl.NumberFormat(locale, 
-    {
-        style: "currency",
-        currency: currency
-    }).format(value)
+function formattedNumbers(locale, currency, value) {
+    return Intl.NumberFormat(locale,
+        {
+            style: "currency",
+            currency: currency
+        }).format(value)
 }
 
 // DISPLAY MOVEMENTS
@@ -170,8 +166,7 @@ function displayMovements(acc, sort = false)
 
     let movs = sort ? acc.movements.slice().sort((a, b) => a - b) : acc.movements;
 
-    for (let [i, value] of movs.entries()) 
-    {
+    for (let [i, value] of movs.entries()) {
         let type = value > 0 ? "deposit" : "withdrawal";
 
         let date = new Date(acc.movementsDates[i]);
@@ -181,7 +176,7 @@ function displayMovements(acc, sort = false)
         let formattedMov = formattedNumbers(acc.locale, acc.currency, value);
 
         let HTML =
-        `
+            `
         <div class="movements__row">
         <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
         <div class="movements__date">${displayDate}</div>
@@ -194,16 +189,14 @@ function displayMovements(acc, sort = false)
 
 // DISPLAY BALANCE
 
-function displayBalance(acc) 
-{
+function displayBalance(acc) {
     acc.balance = acc.movements.reduce((elem, acomu) => elem + acomu);
     labelBalance.textContent = formattedNumbers(acc.locale, acc.currency, acc.balance);
 }
 
 // DISPLAY SUMMARY
 
-function displaySummary(acc) 
-{
+function displaySummary(acc) {
     let positive = acc.movements.filter(elem => elem > 0).reduce((elem, acomu) => elem + acomu);
 
     labelSumIn.textContent = formattedNumbers(acc.locale, acc.currency, positive);
@@ -219,61 +212,52 @@ function displaySummary(acc)
 
 // CREATE NEW ACCOUNTS AND MODAL
 
-btnCreate.addEventListener("click", function(e)
-{
+btnCreate.addEventListener("click", function (e) {
     e.preventDefault();
 
     labelModal.classList.remove("hidden");
     labelOverlay.classList.remove("hidden");
 
-    btnSubmit.addEventListener("click", function(e)
-    {
+    btnSubmit.addEventListener("click", function (e) {
         e.preventDefault();
 
-        if(inputFname.value == "" || inputPin.value == "" || inputMoney.value == "")
-        {
+        if (inputFname.value == "" || inputPin.value == "" || inputMoney.value == "") {
             btnSubmit.classList.add("error");
-    
-            setTimeout(function()
-            {
+
+            setTimeout(function () {
                 btnSubmit.classList.remove("error");
             }, 300)
         }
-        else
-        {
+        else {
             let question1 = inputFname.value;
             let question2 = Number(inputPin.value);
             let question3 = Number(inputMoney.value);
 
-            let accountCreated = {owner: question1, movements: [question3], pin: question2, intRate: 1, movementsDates: [new Date()], locale: "da-DK", currency: "EUR"};
+            let accountCreated = { owner: question1, movements: [question3], pin: question2, intRate: 1, movementsDates: [new Date()], locale: "da-DK", currency: "EUR" };
 
             accouts.push(accountCreated);
 
             creatUserName(accouts);
 
             labelModal.classList.add("hidden");
-            labelOverlay.classList.add("hidden"); 
+            labelOverlay.classList.add("hidden");
         }
     })
 })
 
 // CLOSE MODAL
 
-function closeModal()
-{
+function closeModal() {
     labelModal.classList.add("hidden");
     labelOverlay.classList.add("hidden");
 }
 
-btnCloseModal.addEventListener("click", function()
-{
+btnCloseModal.addEventListener("click", function () {
     closeModal();
 })
 
-document.addEventListener("keydown", function (e)
-{
-    if(e.key == "Escape" && !labelModal.classList.contains("hidden"))
-    {
+document.addEventListener("keydown", function (e) {
+    if (e.key == "Escape" && !labelModal.classList.contains("hidden")) {
         closeModal();
     }
 })
@@ -282,10 +266,8 @@ document.querySelector(".overlay").addEventListener("click", closeModal);
 
 // CREATE USER NAME
 
-function creatUserName(accs) 
-{
-    for (let i of accs)
-    {
+function creatUserName(accs) {
+    for (let i of accs) {
         i.user = i.owner.toLowerCase().split(" ").map(elem => elem[0]).join("");
     }
 }
@@ -294,8 +276,7 @@ creatUserName(accouts);
 
 // UPDATE THE UI DISPLAY
 
-function updateUI(acc) 
-{
+function updateUI(acc) {
     displayMovements(acc);
     displayBalance(acc);
     displaySummary(acc);
@@ -305,14 +286,12 @@ function updateUI(acc)
 
 let currentUser, setTimer;
 
-btnLogin.addEventListener("click", function (e) 
-{
+btnLogin.addEventListener("click", function (e) {
     e.preventDefault();
 
     currentUser = accouts.find(elem => elem.user == inputLoginUsername.value);
 
-    if (currentUser?.pin == inputLoginPin.value) 
-    {        
+    if (currentUser?.pin == inputLoginPin.value) {
         document.body.style.backgroundImage = "url(picture-login.png)"
 
         labelLogo.classList.add("hidden");
@@ -325,8 +304,8 @@ btnLogin.addEventListener("click", function (e)
         containerApp.style.opacity = 100;
 
 
-        if(setTimer) clearInterval(setTimer) // IF THE TIMER EXIST, IT WILL STOP
-        
+        if (setTimer) clearInterval(setTimer) // IF THE TIMER EXIST, IT WILL STOP
+
         setTimer = displayTimer() // THE TIMER NOW RESTART AGAIN
 
 
@@ -338,7 +317,7 @@ btnLogin.addEventListener("click", function (e)
 
         let now = new Date(); // SET THE DATES
 
-        let options = 
+        let options =
         {
             hour: "numeric",
             minute: "numeric",
@@ -349,16 +328,14 @@ btnLogin.addEventListener("click", function (e)
 
         labelDate.textContent = new Intl.DateTimeFormat(currentUser.locale, options).format(now); // SET DATES BASED OF WHERE THE CLIENT IS LOCATED (LOCALE ARRAY)
     }
-    else 
-    {
+    else {
         inputLoginUsername.value = "";
         inputLoginPin.value = "";
 
         inputLoginUsername.classList.add("error");
         inputLoginPin.classList.add("error");
 
-        setTimeout(function()
-        {
+        setTimeout(function () {
             inputLoginUsername.classList.remove("error");
             inputLoginPin.classList.remove("error");
         }, 300)
@@ -371,24 +348,22 @@ function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
 {
     let time = 180;
 
-    let setTimer = setInterval(function()
-    {
+    let setTimer = setInterval(function () {
         let minutes = String(Math.trunc(time / 60)).padStart(2, 0);
         let seconds = String(Math.trunc(time % 60)).padStart(2, 0);
 
         labelTimer.textContent = `${minutes}:${seconds}`;
 
-        if(time == 0)
-        {
+        if (time == 0) {
             clearInterval(setTimer) // to stop the timer
-            
+
             labelLogo.classList.remove("hidden");
             btnCreate.classList.remove("hidden");
             labelNimbus.classList.remove("hidden");
             labelWelcome.classList.remove("hidden");
-        
+
             document.body.style.backgroundImage = "url(picture1.jpg)";
-        
+
             containerApp.style.opacity = 0;
         }
 
@@ -401,22 +376,19 @@ function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
 
 // TRANSFER MONEY
 
-btnTransfer.addEventListener("click", function (e) 
-{
+btnTransfer.addEventListener("click", function (e) {
     e.preventDefault();
 
     let receiver = accouts.find(elem => elem.user == inputTransferTo.value);
 
     let amount = inputTransferAmount.value;
 
-    if (amount > 0 && receiver.user != currentUser.user && amount <= currentUser.balance) 
-    {
+    if (amount > 0 && receiver.user != currentUser.user && amount <= currentUser.balance) {
         labelMinusSymbol.classList.remove("hidden");
 
-        setTimeout(function()
-        {
+        setTimeout(function () {
             labelMinusSymbol.classList.add("hidden");
-        },700)
+        }, 700)
 
         currentUser.movements.push(-amount);
         receiver.movements.push(+amount);
@@ -430,11 +402,10 @@ btnTransfer.addEventListener("click", function (e)
 
         updateUI(currentUser);
 
-        if(setTimer) clearInterval(setTimer) // RESET TIMER       
+        if (setTimer) clearInterval(setTimer) // RESET TIMER       
         setTimer = displayTimer()
     }
-    else 
-    {
+    else {
         alert("⛔Amount exceded⛔");
 
         inputTransferAmount.value = "";
@@ -445,20 +416,17 @@ btnTransfer.addEventListener("click", function (e)
 
 // LOAN MONEY
 
-btnLoan.addEventListener("click", function (e) 
-{
+btnLoan.addEventListener("click", function (e) {
     e.preventDefault();
 
     let amountLoad = Math.floor(inputLoanAmount.value);
 
     let deposit10Percent = currentUser.movements.some(elem => elem >= amountLoad / 10);
 
-    if (amountLoad > 0 && deposit10Percent) 
-    {
+    if (amountLoad > 0 && deposit10Percent) {
         labelPlusSymbol.classList.remove("hidden");
 
-        setTimeout(function()
-        {
+        setTimeout(function () {
             labelPlusSymbol.classList.add("hidden");
         }, 980)
 
@@ -471,11 +439,10 @@ btnLoan.addEventListener("click", function (e)
 
         updateUI(currentUser);
 
-        if(setTimer) clearInterval(setTimer) // RESET TIMER       
+        if (setTimer) clearInterval(setTimer) // RESET TIMER       
         setTimer = displayTimer()
     }
-    else 
-    {
+    else {
         alert("⛔Not enough money in your balance⛔");
 
         inputLoanAmount.value = "";
@@ -485,16 +452,14 @@ btnLoan.addEventListener("click", function (e)
 
 // DELETE ACCOUNT
 
-btnClose.addEventListener("click", function (e) 
-{
+btnClose.addEventListener("click", function (e) {
     e.preventDefault();
 
     let userInput = inputCloseUsername.value;
 
     let pinInput = inputClosePin.value;
 
-    if (userInput == currentUser.user && pinInput == currentUser.pin) 
-    {
+    if (userInput == currentUser.user && pinInput == currentUser.pin) {
         containerApp.style.opacity = 0;
         document.body.style.backgroundImage = "url(picture1.jpg)"
         btnCreate.classList.remove("hidden");
@@ -512,8 +477,7 @@ btnClose.addEventListener("click", function (e)
 
         labelWelcome.textContent = "Log in";
     }
-    else 
-    {
+    else {
         alert("⛔Wrong user or pin⛔");
     }
 })
@@ -522,8 +486,7 @@ btnClose.addEventListener("click", function (e)
 
 let sorted;
 
-btnSort.addEventListener("click", function(e)
-{
+btnSort.addEventListener("click", function (e) {
     e.preventDefault();
 
     displayMovements(currentUser, !sorted);

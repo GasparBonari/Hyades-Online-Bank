@@ -221,17 +221,20 @@ btnCreate.addEventListener("click", function (e) {
     labelModal.classList.remove("hidden");
     labelOverlay.classList.remove("hidden");
 
-    btnSubmit.addEventListener("click", function (e) {
+    btnSubmit.addEventListener("click", function (e) 
+    {     
         e.preventDefault();
 
-        if (inputFname.value == "" || inputPin.value == "" || inputMoney.value == "") {
+        if (inputFname.value == "" || inputPin.value == "" || inputMoney.value == "") 
+        {
             btnSubmit.classList.add("error");
 
             setTimeout(function () {
                 btnSubmit.classList.remove("error");
             }, 300)
         }
-        else {
+        else 
+        {
             let question1 = inputFname.value;
             let question2 = Number(inputPin.value);
             let question3 = Number(inputMoney.value);

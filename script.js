@@ -96,10 +96,9 @@ const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
-const labelLogo = document.querySelector(".logo");
 const labelModal = document.querySelector(".modal");
 const labelOverlay = document.querySelector(".overlay");
-const labelNimbus = document.querySelector(".nimbus");
+const labelHeader = document.querySelector(".header__title");
 const labelMinusSymbol = document.querySelector(".minus");
 const labelPlusSymbol = document.querySelector(".plus");
 
@@ -127,9 +126,8 @@ const inputPin = document.querySelector("#pin");
 const inputMoney = document.querySelector("#new-money");
 
 
-labelLogo.classList.remove("hidden");
+// alert("Demo accouts:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" + "user: rd, pin: 3333\n" + "user: gb, pin: 4444");
 
-alert("Demo accouts:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" + "user: rd, pin: 3333\n" + "user: gb, pin: 4444");
 
 // CALCULATE DATES
 
@@ -148,6 +146,7 @@ function formatDate(date, locale) {
     }
 }
 
+
 // FORMAT BALANCE AND MOVEMENTS
 
 function formattedNumbers(locale, currency, value) {
@@ -157,6 +156,7 @@ function formattedNumbers(locale, currency, value) {
         currency: currency
     }).format(value)
 }
+
 
 // DISPLAY MOVEMENTS
 
@@ -187,12 +187,14 @@ function displayMovements(acc, sort = false)
     }
 }
 
+
 // DISPLAY BALANCE
 
 function displayBalance(acc) {
     acc.balance = acc.movements.reduce((elem, acomu) => elem + acomu);
     labelBalance.textContent = formattedNumbers(acc.locale, acc.currency, acc.balance);
 }
+
 
 // DISPLAY SUMMARY
 
@@ -209,6 +211,7 @@ function displaySummary(acc) {
 
     labelSumInterest.textContent = formattedNumbers(acc.locale, acc.currency, calcInterest);;
 }
+
 
 // CREATE NEW ACCOUNTS AND MODAL
 
@@ -245,6 +248,7 @@ btnCreate.addEventListener("click", function (e) {
     })
 })
 
+
 // CLOSE MODAL
 
 function closeModal() {
@@ -264,6 +268,7 @@ document.addEventListener("keydown", function (e) {
 
 document.querySelector(".overlay").addEventListener("click", closeModal);
 
+
 // CREATE USER NAME
 
 function creatUserName(accs) {
@@ -274,6 +279,7 @@ function creatUserName(accs) {
 
 creatUserName(accouts);
 
+
 // UPDATE THE UI DISPLAY
 
 function updateUI(acc) {
@@ -281,6 +287,7 @@ function updateUI(acc) {
     displayBalance(acc);
     displaySummary(acc);
 }
+
 
 // LOG IN
 
@@ -294,9 +301,8 @@ btnLogin.addEventListener("click", function (e) {
     if (currentUser?.pin == inputLoginPin.value) {
         document.body.style.backgroundImage = "url(picture-login.png)"
 
-        labelLogo.classList.add("hidden");
         btnCreate.classList.add("hidden");
-        labelNimbus.classList.add("hidden");
+        labelHeader.classList.add("hidden");
         labelWelcome.classList.add("hidden");
 
         labelNameUser.textContent = `Welcome, ${currentUser.owner.split(" ")[0]}`;
@@ -342,6 +348,7 @@ btnLogin.addEventListener("click", function (e) {
     }
 })
 
+
 // LOG OUT AND TIMER
 
 function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
@@ -357,9 +364,8 @@ function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
         if (time == 0) {
             clearInterval(setTimer) // to stop the timer
 
-            labelLogo.classList.remove("hidden");
             btnCreate.classList.remove("hidden");
-            labelNimbus.classList.remove("hidden");
+            labelHeader.classList.remove("hidden");
             labelWelcome.classList.remove("hidden");
 
             document.body.style.backgroundImage = "url(picture1.jpg)";
@@ -373,6 +379,7 @@ function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
 
     return setTimer;
 }
+
 
 // TRANSFER MONEY
 
@@ -414,6 +421,7 @@ btnTransfer.addEventListener("click", function (e) {
     }
 })
 
+
 // LOAN MONEY
 
 btnLoan.addEventListener("click", function (e) {
@@ -450,6 +458,7 @@ btnLoan.addEventListener("click", function (e) {
     }
 })
 
+
 // DELETE ACCOUNT
 
 btnClose.addEventListener("click", function (e) {
@@ -463,8 +472,7 @@ btnClose.addEventListener("click", function (e) {
         containerApp.style.opacity = 0;
         document.body.style.backgroundImage = "url(picture1.jpg)"
         btnCreate.classList.remove("hidden");
-        labelLogo.classList.remove("hidden");
-        labelNimbus.classList.remove("hidden");
+        labelHeader.classList.remove("hidden");
 
 
         let index = accouts.findIndex(elem => elem.user == currentUser.user);
@@ -481,6 +489,7 @@ btnClose.addEventListener("click", function (e) {
         alert("⛔Wrong user or pin⛔");
     }
 })
+
 
 // SORT
 

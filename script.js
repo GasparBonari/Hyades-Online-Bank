@@ -126,7 +126,7 @@ const inputPin = document.querySelector("#pin");
 const inputMoney = document.querySelector("#new-money");
 
 
-// alert("Demo accouts:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" + "user: rd, pin: 3333\n" + "user: gb, pin: 4444");
+alert("Demo accouts:\n" + "user: js, pin: 1111\n" + "user: mb, pin: 2222\n" + "user: rd, pin: 3333\n" + "user: gb, pin: 4444");
 
 
 // CALCULATE DATES

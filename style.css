@@ -503,3 +503,113 @@ h2 {
 #submit{
   margin-top: 2rem;
 }
+
+/*------------------------------------------------------Phone media------------------------------------------------------------- */
+
+@media only screen and (max-width: 480px)
+{
+  .login__btn{
+    margin-right: -1cm;
+  }
+
+  .direction{
+    display: none;
+  }
+
+  .createUser{
+    top: 10%;
+    right: 39%;
+  }
+
+  .modal{
+    padding: 1rem 3rem;
+  }
+
+  .balance__label {
+    font-size: 2.2rem;
+    font-weight: 500;
+    position: absolute;
+    left: 2.5cm;
+    top:-3.5cm;
+    color: white;
+  }
+  
+  .balance__date {
+    position: absolute;
+    left: 2.6cm;
+    top: -2.7cm;
+  }
+  
+  .balance__value {
+    font-size: 4rem;
+    position: absolute;
+    left: 2.3cm;
+    top: -1.2cm;
+  }
+
+  .app{
+
+      position: relative;
+      top: 4.5cm;
+      max-width: 100rem;
+      margin: 4rem auto;
+      display: grid;
+      grid-template-columns: 4fr 3fr;
+      grid-template-rows: auto repeat(3, 15rem) auto;
+      gap: 2rem;
+  }
+
+  .operation--close {
+    display: none;
+  }
+  
+  .operation--transfer {
+    background-image: linear-gradient(to top left, #4b43b9, #9e5f99);
+    height: 3.5cm;
+    position: inherit;
+    bottom: -13cm;
+    right: 10.5cm;
+  }
+  
+  .operation--loan {
+    background-image: linear-gradient(to top left, #48d3cc, #b6e265);
+    height: 3.5cm;
+    position: inherit;
+    bottom: -8.5cm;
+    right: 6cm;
+  }
+
+  .movements {
+    padding: 0rem 19rem 2rem;
+  }
+  
+  .movements__row {
+    margin-left: -5cm;
+  }
+  
+  .movements__type {
+    margin-right: 4rem;
+  }
+  
+  .movements__date {
+    margin-right: 4rem;
+  }
+
+  .movements__type {
+    font-size: 1.2rem;
+    padding: 0.3rem 1rem;
+    border-radius: 4rem;
+    margin-right: 3rem;
+  }
+
+  .logout-timer {
+    padding: 0 0.3rem;
+    margin-top: -13.5cm;
+    text-align: right;
+    font-size: 1.25rem;
+    position: absolute;
+    top: 97%;
+    right: 2.7cm;
+    color: white;
+  }
+}

@@ -612,4 +612,12 @@ h2 {
     right: 2.7cm;
     color: white;
   }
+
+  .minus{
+    display: none;
+  }
+
+  .plus{
+    display: none;
+  }
 }

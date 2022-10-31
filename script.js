@@ -254,17 +254,21 @@ btnCreate.addEventListener("click", function (e) {
 
 // CLOSE MODAL
 
-function closeModal() {
+function closeModal() 
+{
     labelModal.classList.add("hidden");
     labelOverlay.classList.add("hidden");
 }
 
-btnCloseModal.addEventListener("click", function () {
+btnCloseModal.addEventListener("click", function () 
+{
     closeModal();
 })
 
-document.addEventListener("keydown", function (e) {
-    if (e.key == "Escape" && !labelModal.classList.contains("hidden")) {
+document.addEventListener("keydown", function (e) 
+{
+    if (e.key == "Escape" && !labelModal.classList.contains("hidden")) 
+    {
         closeModal();
     }
 })
@@ -274,8 +278,10 @@ document.querySelector(".overlay").addEventListener("click", closeModal);
 
 // CREATE USER NAME
 
-function creatUserName(accs) {
-    for (let i of accs) {
+function creatUserName(accs) 
+{
+    for (let i of accs) 
+    {
         i.user = i.owner.toLowerCase().split(" ").map(elem => elem[0]).join("");
     }
 }
@@ -285,7 +291,8 @@ creatUserName(accouts);
 
 // UPDATE THE UI DISPLAY
 
-function updateUI(acc) {
+function updateUI(acc) 
+{
     displayMovements(acc);
     displayBalance(acc);
     displaySummary(acc);
@@ -296,12 +303,14 @@ function updateUI(acc) {
 
 let currentUser, setTimer;
 
-btnLogin.addEventListener("click", function (e) {
+btnLogin.addEventListener("click", function (e) 
+{
     e.preventDefault();
 
     currentUser = accouts.find(elem => elem.user == inputLoginUsername.value);
 
-    if (currentUser?.pin == inputLoginPin.value) {
+    if (currentUser?.pin == inputLoginPin.value) 
+    {
         document.body.style.backgroundImage = "url(picture-login.png)"
 
         btnCreate.classList.add("hidden");
@@ -337,14 +346,16 @@ btnLogin.addEventListener("click", function (e) {
 
         labelDate.textContent = new Intl.DateTimeFormat(currentUser.locale, options).format(now); // SET DATES BASED OF WHERE THE CLIENT IS LOCATED (LOCALE ARRAY)
     }
-    else {
+    else 
+    {
         inputLoginUsername.value = "";
         inputLoginPin.value = "";
 
         inputLoginUsername.classList.add("error");
         inputLoginPin.classList.add("error");
 
-        setTimeout(function () {
+        setTimeout(function () 
+        {
             inputLoginUsername.classList.remove("error");
             inputLoginPin.classList.remove("error");
         }, 300)
@@ -358,13 +369,15 @@ function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
 {
     let time = 180;
 
-    let setTimer = setInterval(function () {
+    let setTimer = setInterval(function () 
+    {
         let minutes = String(Math.trunc(time / 60)).padStart(2, 0);
         let seconds = String(Math.trunc(time % 60)).padStart(2, 0);
 
         labelTimer.textContent = `${minutes}:${seconds}`;
 
-        if (time == 0) {
+        if (time == 0) 
+        {
             clearInterval(setTimer) // to stop the timer
 
             btnCreate.classList.remove("hidden");
@@ -386,17 +399,20 @@ function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
 
 // TRANSFER MONEY
 
-btnTransfer.addEventListener("click", function (e) {
+btnTransfer.addEventListener("click", function (e) 
+{
     e.preventDefault();
 
     let receiver = accouts.find(elem => elem.user == inputTransferTo.value);
 
     let amount = inputTransferAmount.value;
 
-    if (amount > 0 && receiver.user != currentUser.user && amount <= currentUser.balance) {
+    if (amount > 0 && receiver.user != currentUser.user && amount <= currentUser.balance) 
+    {
         labelMinusSymbol.classList.remove("hidden");
 
-        setTimeout(function () {
+        setTimeout(function () 
+        {
             labelMinusSymbol.classList.add("hidden");
         }, 700)
 
@@ -415,7 +431,8 @@ btnTransfer.addEventListener("click", function (e) {
         if (setTimer) clearInterval(setTimer) // RESET TIMER       
         setTimer = displayTimer()
     }
-    else {
+    else 
+    {
         alert("⛔Amount exceded⛔");
 
         inputTransferAmount.value = "";
@@ -427,17 +444,20 @@ btnTransfer.addEventListener("click", function (e) {
 
 // LOAN MONEY
 
-btnLoan.addEventListener("click", function (e) {
+btnLoan.addEventListener("click", function (e) 
+{
     e.preventDefault();
 
     let amountLoad = Math.floor(inputLoanAmount.value);
 
     let deposit10Percent = currentUser.movements.some(elem => elem >= amountLoad / 10);
 
-    if (amountLoad > 0 && deposit10Percent) {
+    if (amountLoad > 0 && deposit10Percent) 
+    {
         labelPlusSymbol.classList.remove("hidden");
 
-        setTimeout(function () {
+        setTimeout(function () 
+        {
             labelPlusSymbol.classList.add("hidden");
         }, 980)
 
@@ -453,7 +473,8 @@ btnLoan.addEventListener("click", function (e) {
         if (setTimer) clearInterval(setTimer) // RESET TIMER       
         setTimer = displayTimer()
     }
-    else {
+    else 
+    {
         alert("⛔Not enough money in your balance⛔");
 
         inputLoanAmount.value = "";
@@ -464,14 +485,16 @@ btnLoan.addEventListener("click", function (e) {
 
 // DELETE ACCOUNT
 
-btnClose.addEventListener("click", function (e) {
+btnClose.addEventListener("click", function (e) 
+{
     e.preventDefault();
 
     let userInput = inputCloseUsername.value;
 
     let pinInput = inputClosePin.value;
 
-    if (userInput == currentUser.user && pinInput == currentUser.pin) {
+    if (userInput == currentUser.user && pinInput == currentUser.pin) 
+    {
         containerApp.style.opacity = 0;
         document.body.style.backgroundImage = "url(picture1.jpg)"
         btnCreate.classList.remove("hidden");
@@ -488,7 +511,8 @@ btnClose.addEventListener("click", function (e) {
 
         labelWelcome.textContent = "Log in";
     }
-    else {
+    else 
+    {
         alert("⛔Wrong user or pin⛔");
     }
 })
@@ -498,7 +522,8 @@ btnClose.addEventListener("click", function (e) {
 
 let sorted;
 
-btnSort.addEventListener("click", function (e) {
+btnSort.addEventListener("click", function (e) 
+{
     e.preventDefault();
 
     displayMovements(currentUser, !sorted);

@@ -365,7 +365,7 @@ btnLogin.addEventListener("click", function (e)
 
 // LOG OUT AND TIMER
 
-function displayTimer() // IT'S CALLED IN LOG IN FUNCTION
+function displayTimer() // IT'S CALLED IN LOG-IN FUNCTION
 {
     let time = 180;
 
@@ -428,8 +428,11 @@ btnTransfer.addEventListener("click", function (e)
 
         updateUI(currentUser);
 
-        if (setTimer) clearInterval(setTimer) // RESET TIMER       
-        setTimer = displayTimer()
+        if(setTimer)
+        {
+            clearInterval(setTimer) // RESET TIMER       
+            setTimer = displayTimer()
+        } 
     }
     else 
     {

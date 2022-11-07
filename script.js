@@ -322,10 +322,11 @@ btnLogin.addEventListener("click", function (e)
         containerApp.style.opacity = 100;
 
 
-        if (setTimer) clearInterval(setTimer) // IF THE TIMER EXIST, IT WILL STOP
-
-        setTimer = displayTimer() // THE TIMER NOW RESTART AGAIN
-
+        if(setTimer)
+        {
+            clearInterval(setTimer) // IF THE TIMER EXIST, IT WILL STOP      
+            setTimer = displayTimer() // THE TIMER NOW RESTART AGAIN
+        } 
 
         updateUI(currentUser);
 
@@ -473,8 +474,11 @@ btnLoan.addEventListener("click", function (e)
 
         updateUI(currentUser);
 
-        if (setTimer) clearInterval(setTimer) // RESET TIMER       
-        setTimer = displayTimer()
+        if(setTimer)
+        {
+            clearInterval(setTimer) // RESET TIMER       
+            setTimer = displayTimer()
+        } 
     }
     else 
     {

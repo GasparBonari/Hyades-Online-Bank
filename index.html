@@ -22,10 +22,8 @@
   <body>
     <!-- TOP NAVIGATION -->
     <nav>
-      <p class="welcome">Log in</p>
-      <p class="direction">👈</p>
-      <button class ="createUser">Create user</button>
       <form class="login">
+        <p class="welcome">Log in</p>
         <input
           type="text"
           placeholder="user"
@@ -37,7 +35,11 @@
           class="login__input login__input--pin"
         />
         <button class="login__btn">🔓</button>
+        <p class="direction">👈</p>
       </form>
+      <div class="createUser">
+        <button class ="btnCreateUser">Create user</button>
+      </div>
     </nav>
 
      <!-- CREATE ACCOUT -->
@@ -67,8 +69,8 @@
           </p>
         </div>
         <p class="balance__value">0000€</p>
-        <img src="minus.png" class="minus hidden">
-        <img src="plus.gif" class="plus hidden">
+        <img src="img/minus.png" class="minus hidden">
+        <img src="img/plus.gif" class="plus hidden">
       </div>
 
       <!-- MOVEMENTS -->

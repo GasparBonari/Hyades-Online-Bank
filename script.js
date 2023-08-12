@@ -110,7 +110,7 @@ const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
-const btnCreate = document.querySelector(".createUser");
+const btnCreate = document.querySelector(".btnCreateUser");
 const btnSubmit = document.querySelector("#submit");
 const btnCloseModal = document.querySelector(".close-modal");
 
@@ -138,10 +138,12 @@ function formatDate(date, locale) {
 
     if (dayPassed == 0) return "Today"; // return is going to RETURN that value
     if (dayPassed == 1) return "Yesterday";
-    if (dayPassed <= 7) {
+    if (dayPassed <= 7) 
+    {
         return `${dayPassed} days ago`;
     }
-    else {
+    else 
+    {
         return new Intl.DateTimeFormat(locale).format(date)
     }
 }
@@ -149,7 +151,8 @@ function formatDate(date, locale) {
 
 // FORMAT BALANCE AND MOVEMENTS
 
-function formattedNumbers(locale, currency, value) {
+function formattedNumbers(locale, currency, value) 
+{
     return Intl.NumberFormat(locale,
     {
         style: "currency",
@@ -166,7 +169,8 @@ function displayMovements(acc, sort = false)
 
     let movs = sort ? acc.movements.slice().sort((a, b) => a - b) : acc.movements;
 
-    for (let [i, value] of movs.entries()) {
+    for (let [i, value] of movs.entries()) 
+    {
         let type = value > 0 ? "deposit" : "withdrawal";
 
         let date = new Date(acc.movementsDates[i]);
@@ -176,7 +180,7 @@ function displayMovements(acc, sort = false)
         let formattedMov = formattedNumbers(acc.locale, acc.currency, value);
 
         let HTML =
-            `
+        `
         <div class="movements__row">
         <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
         <div class="movements__date">${displayDate}</div>
@@ -190,7 +194,8 @@ function displayMovements(acc, sort = false)
 
 // DISPLAY BALANCE
 
-function displayBalance(acc) {
+function displayBalance(acc) 
+{
     acc.balance = acc.movements.reduce((elem, acomu) => elem + acomu);
     labelBalance.textContent = formattedNumbers(acc.locale, acc.currency, acc.balance);
 }
@@ -198,7 +203,8 @@ function displayBalance(acc) {
 
 // DISPLAY SUMMARY
 
-function displaySummary(acc) {
+function displaySummary(acc) 
+{
     let positive = acc.movements.filter(elem => elem > 0).reduce((elem, acomu) => elem + acomu);
 
     labelSumIn.textContent = formattedNumbers(acc.locale, acc.currency, positive);
@@ -215,7 +221,8 @@ function displaySummary(acc) {
 
 // CREATE NEW ACCOUNTS AND MODAL
 
-btnCreate.addEventListener("click", function (e) {
+btnCreate.addEventListener("click", function (e) 
+{
     e.preventDefault();
 
     labelModal.classList.remove("hidden");
@@ -311,7 +318,7 @@ btnLogin.addEventListener("click", function (e)
 
     if (currentUser?.pin == inputLoginPin.value) 
     {
-        document.body.style.backgroundImage = "url(picture-login.png)"
+        document.body.style.backgroundImage = "url(img/picture-login.png)"
 
         btnCreate.classList.add("hidden");
         labelHeader.classList.add("hidden");
